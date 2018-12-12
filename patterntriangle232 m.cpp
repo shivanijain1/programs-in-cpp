@@ -5,8 +5,10 @@ int main()
 cin>>n;
 int s=n-1;
 int m=1;
+ int k=0;
+ 
     for (int i=1;i<=n;i++)
-    {int k=0;
+    {
 for (int j=1;j<=s;j++)
 {
     cout<<" ";}
