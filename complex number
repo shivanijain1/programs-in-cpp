@@ -1,0 +1,65 @@
+#include<iostream>
+using namespace std;
+class complexno
+{
+    int r;
+    int c;
+    public:
+        complexno ()
+        {
+            r=0;
+            c=0;
+        }
+        complexno (int real,int img)
+        {
+            r=real;
+            c=img;
+        }
+        void setreal (int real)
+        {
+            r=real;
+        }
+        void setimg (int img)
+        {
+            c=img;
+        }
+        int getreal ()
+        {
+            return r;
+        }
+        int getimg ()
+        {
+            return c;
+        }
+        void print ()
+        {
+            if (c>0)
+            {
+                cout<<r<<"+"<<c<<"i";
+            }
+            else
+            {
+                cout<<r<<c<<"i";
+            }
+        }
+
+void add (complexno &x)
+{
+    r=r+x.r;
+    c=c+x.c;
+}
+};
+int main ()
+{
+    complexno c1 (-15,3);
+    complexno c2 ;
+    c2.setreal(6);
+    c2.setimg (-9);
+    c1.print();
+    cout<<endl;
+    c2.print ();
+    c1.add(c2);
+    cout<<endl;
+    c1.print();
+}
+
