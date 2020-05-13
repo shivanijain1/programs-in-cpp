@@ -1,0 +1,45 @@
+#include <bits/stdc++.h>
+#define ll long long
+using namespace std;
+//buid tree
+void buildTree(int *arr,int *tree,int s,int end,int treeindex){
+    int mid=(s+end)/2;
+    if (s==end){
+        tree[treeindex]=arr[s];
+        return;
+    }
+    buildTree(arr,tree,s,mid,2*treeindex);
+    buildTree(arr,tree,mid+1,end,2*treeindex+1);
+    tree [treeindex]=tree[2*treeindex]+tree[2*treeindex+1];
+    
+}
+//update tree
+void updateTree (int *arr,int *tree,int s, int end,int treeindex,int key,int keyvalue){
+    int mid = (s+end)/2;
+    if (s==end){
+        arr[key]=keyvalue;
+        tree[treeindex]=keyvalue;
+        return; 
+        
+    }
+    if (key<mid){
+        updateTree (arr,tree,s,mid,2*treeindex,key,keyvalue);
+    }
+    else{
+        updateTree (arr,tree,mid+1,end,2*treeindex+1,key,keyvalue);
+    }
+    tree [treeindex]=tree[2*treeindex]+tree[2*treeindex+1];
+}
+int main() {
+    int n;cin>>n;
+	int arr[n];
+	int  *tree= new int[2*n];
+	for (int i=0;i<n;i++)cin>>arr[i];
+	
+	buildTree(arr,tree,0,n-1,1);
+	updateTree(arr,tree,0,n-1,1,2,10);
+	
+	for (int i=1;i<2*n;i++)
+	cout<<tree[i]<<endl;
+	return 0;
+}
