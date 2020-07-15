@@ -1,0 +1,60 @@
+#include <bits/stdc++.h>
+#define ff first
+#define ss second
+#define ull unsigned long long int
+#define ll  long long 
+#define pb push_back
+#define vi vector <int>
+#define mp map<int,int>
+#define pi pair<int,int>
+#define pl pair<ll,ll>
+#define rep(i,n) for (ll i=0;i<n;i++)
+#define rep1(i,j,n) rep(i,n)rep(j,n)
+#define rep2(i,j,a,b) for (ll i=a;i<b;i++)
+#define fio ios_base::sync_with_stdio(false);
+#define fio2 cin.tie(NULL);cout.tie(NULL);
+#define a(x) x.begin(), x.end()
+#define ar(x) x.rbegin(), x.rend()
+#define w(x) ll t;cin>>t; while(t--)
+#define mod 1000000007 
+#define endl "\n"
+using namespace std;
+//longest prefix suffix
+int *longpresuf(string str){
+    int n=str.length();
+    int *v = new int [n];
+    v[0]=0;
+    int j=0,i=1;
+    while (i<n){
+    if (str[j]==str[i]){
+       v[i]=(j+1); 
+       i++;
+       j++;
+    }
+    else{
+        if (j!=0){
+            j=v[j-1];
+        }
+        else{
+            v[i]=0;
+            i++;
+        }
+    }
+}
+return v;
+}
+
+
+int main(){
+    //w(x){
+        
+        //cout<<func()<<endl;
+       // }
+       string str;cin>>str;
+       int *v= longpresuf(str);
+       int n=str.length();
+       rep(i,n-1)
+       cout<<v[i]<<" ";
+       
+       
+}
