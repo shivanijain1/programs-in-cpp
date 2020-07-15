@@ -1,0 +1,81 @@
+#include <bits/stdc++.h>
+#define ff first
+#define ss second
+#define ull unsigned long long int
+#define ll  long long 
+#define pb push_back
+#define vi vector <int>
+#define mp map<int,int>
+#define pi pair<int,int>
+#define pl pair<ll,ll>
+#define rep(i,n) for (ll i=0;i<n;i++)
+#define rep1(i,j,n) rep(i,n)rep(j,n)
+#define rep2(i,j,a,b) for (ll i=a;i<b;i++)
+#define fio ios_base::sync_with_stdio(false);
+#define fio2 cin.tie(NULL);cout.tie(NULL);
+#define a(x) x.begin(), x.end()
+#define ar(x) x.rbegin(), x.rend()
+#define w(x) ll t;cin>>t; while(t--)
+#define mod 1000000007 
+#define endl "\n"
+using namespace std;
+//building z array (length of the longest substring at position k which is also the prefix of th string)
+void buildzarray(int *arr,string str){
+    int n=str.length();
+    //arr[0]=0;
+    int l=0,r=0;
+    for (int i=1;i<n;i++){
+  // i doesnt lie btwn l and r 
+// therefore z doesnt exist for this before 
+        if (i>r){
+        l=i;r=i;
+        while (r<n and str[r-l]==str[r]){
+            r++;
+        }
+        arr[i]=r-l;
+        r--;
+    }
+    else{
+    // i  lie btwn l and r 
+// therefore z already exist for this
+        int k=r-l;
+        if (arr[k]<=r-i){
+            arr[i]=arr[k];
+        }
+        else{
+        //some part of z already included we have to add further if any match exist
+            l=i;
+            while (r<n and str[r-l]==str[r]){
+                r++;
+            }
+            arr[i]=r-l;
+            r--;
+        }
+    }
+    } 
+    
+}
+void searchstring (string txt,string pattern){
+    string str=pattern+"$"+txt;
+    int n=str.length();
+    int *arr=new int[n]();
+    buildzarray (arr,str);
+    for (int i=0;i<n;i++){
+        if (arr[i]==pattern.length()){
+            cout<< i-pattern.length()-1<<endl;
+            
+        }
+    }
+    
+}
+
+
+int main(){
+    //w(x){
+
+        //cout<<func()<<endl;
+       // }
+      string txt,pattern;cin>>txt>>pattern;
+      searchstring(txt,pattern);
+
+}
