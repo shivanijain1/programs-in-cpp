@@ -1,0 +1,48 @@
+#include <bits/stdc++.h>
+#define ff first
+#define ss second
+#define ull unsigned long long int
+#define ll  long long 
+#define pb push_back
+#define vi vector <int>
+#define mp map<int,int>
+#define pi pair<int,int>
+#define pl pair<ll,ll>
+#define rep(i,n) for (ll i=0;i<n;i++)
+#define rep1(i,j,n) rep(i,n)rep(j,n)
+#define rep2(i,j,a,b) for (ll i=a;i<b;i++)
+#define fio ios_base::sync_with_stdio(false);
+#define fio2 cin.tie(NULL);cout.tie(NULL);
+#define a(x) x.begin(), x.end()
+#define ar(x) x.rbegin(), x.rend()
+#define w(x) ll t;cin>>t; while(t--)
+#define mod 1000000007 
+#define endl "\n"
+using namespace std;
+//function of minlength input "helloo" output "h1e1l2o2"
+string minlength(string str){
+    int n=str.length();
+    string res="";
+    int l=0,r=0;
+    
+    while (l<n){
+    if (str[l]!=str[r] and r==n){
+        res+=str[l];
+        res+='0'+(r-l);
+        l=r;
+    }
+    else{
+        r++;
+    }
+    
+    }return res;
+}
+
+int main(){
+    
+string str;cin>>str;
+cout<<minLength(str);
+
+      
+    
+}
