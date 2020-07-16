@@ -1,0 +1,22 @@
+//implementation of pairs of pairs
+string findReplaceString(string s, vector<int>& indexes, vector<string>& sources, vector<string>& targets) {
+       map <int, pair<string,string>> m;
+        int n=s.length();
+        int ni=indexes.size();
+        string res="";
+        for (int i(0);i<ni;i++){
+            m.insert(make_pair(indexes[i],make_pair(sources[i],targets[i])));
+        }
+        int pos=0;
+        while (pos<n){
+            if (m.count(pos) and m[pos].first==string(s.begin()+pos,s.begin()+pos+m[pos].first.size())){
+                res+=m[pos].second;
+                pos+=m[pos].first.size();
+            }
+            else{
+                res+=s[pos];
+                pos+=1;
+            }
+        }
+        return res;
+    }
