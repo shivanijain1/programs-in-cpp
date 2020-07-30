@@ -1,0 +1,63 @@
+#include <bits/stdc++.h>
+#define ff first
+#define ss second
+#define ull unsigned long long int
+#define ll  long long 
+#define pb push_back
+#define vi vector <int>
+#define vl vector <ll>
+#define mp map<int,int>
+#define pi pair<int,int>
+#define pl pair<ll,ll>
+#define rep(i,n) for (ll i=0;i<n;i++)
+#define rep1(i,j,n) rep(i,n)rep(j,n)
+#define rep2(i,a,b) for (ll i=a;i<b;i++)
+#define fio ios_base::sync_with_stdio(false);
+#define fio2 cin.tie(NULL);cout.tie(NULL);
+#define a(x) x.begin(), x.end()
+#define ar(x) x.rbegin(), x.rend()
+#define w(x) ll t;cin>>t; while(t--)
+#define mod 1000000007 
+#define endl "\n"
+using namespace std;
+
+int median(ll a[],int n){
+    if (n%2==0){
+        return (a[n/2]+a[n/2-1])/2;
+    }
+    return (a[n/2]);
+}
+
+int func(ll a[],ll b[],ll n){
+    
+    if (n==0)return 0;
+    if (n==1)return (a[0]+b[0]);
+    if (n==2)return (max(a[0],b[0])+min(a[1],b[1]));
+    
+    int m1=median(a,n);
+    int m2=median(b,n);
+    if (m1==m2)return m1;
+    if (m1<m2){
+        if (n%2==0){
+          return   func(a+n/2-1,b,n-n/2+1);
+        }
+     return func(a+n/2,b,n-n/2);   
+    }
+    else{
+        if (n%2==0){
+            return func(b+n/2-1,a,n-n/2+1);
+        }
+        return func(b+n/2,a,n-n/2);
+    }
+
+}
+
+int main(){
+    w(x){
+        int n;cin>>n;
+        ll a[n],b[n];
+        rep(i,n)cin>>a[i];
+        rep(i,n)cin>>b[i];
+      cout<<  func(a,b,n)<<endl;
+}
+}
