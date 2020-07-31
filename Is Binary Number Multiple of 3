@@ -24,12 +24,12 @@ using namespace std;
 void func(){
     string n;cin>>n;
     int l = n.length();
-    int ce=0,co=0;
+    int ce=0,co=0;// count of odd set bits and even set bits
    while (l>=0){
-        if (n[l] & 1)
+        if (n[l] & 1)// odd set bits
             co++;
           l--;
-        if (n[l]&1)
+        if (n[l]&1)//evn setbits
             ce++;
             l--;
   
